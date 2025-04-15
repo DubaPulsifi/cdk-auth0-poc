@@ -1,0 +1,34 @@
+{
+  "version": "40.0.0",
+  "files": {
+    "2adb4308668fc10cd1abaf19d8ee437c4484df00a392d694575f81f137187462": {
+      "source": {
+        "path": "/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "434343955077-ap-southeast-1": {
+          "bucketName": "cdk-hnb659fds-assets-434343955077-ap-southeast-1",
+          "objectKey": "2adb4308668fc10cd1abaf19d8ee437c4484df00a392d694575f81f137187462.zip",
+          "region": "ap-southeast-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-file-publishing-role-434343955077-ap-southeast-1"
+        }
+      }
+    },
+    "0482bdb0a21b2f7b2b1921e4cb17a19c27d6bf97f9abca6ac385153697c67ba8": {
+      "source": {
+        "path": "CdkAuth0PocStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "434343955077-ap-southeast-1": {
+          "bucketName": "cdk-hnb659fds-assets-434343955077-ap-southeast-1",
+          "objectKey": "0482bdb0a21b2f7b2b1921e4cb17a19c27d6bf97f9abca6ac385153697c67ba8.json",
+          "region": "ap-southeast-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-file-publishing-role-434343955077-ap-southeast-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

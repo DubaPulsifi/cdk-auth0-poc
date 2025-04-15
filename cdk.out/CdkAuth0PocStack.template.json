@@ -1,0 +1,219 @@
+{
+ "Resources": {
+  "IdentityFnPOCQueue633B7992": {
+   "Type": "AWS::SQS::Queue",
+   "Properties": {
+    "FifoQueue": true,
+    "QueueName": "identity-fn-poc-queue.fifo",
+    "Tags": [
+     {
+      "Key": "Stack",
+      "Value": "identity-fn-sandbox-stack"
+     }
+    ],
+    "VisibilityTimeout": 300
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/IdentityFnPOCQueue/Resource"
+   }
+  },
+  "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Stack",
+      "Value": "identity-fn-sandbox-stack"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/Resource"
+   }
+  },
+  "Auth0AccountSetupPOCHandlerServiceRoleDefaultPolicyD3FA7E20": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "sqs:ChangeMessageVisibility",
+        "sqs:DeleteMessage",
+        "sqs:GetQueueAttributes",
+        "sqs:GetQueueUrl",
+        "sqs:ReceiveMessage"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "IdentityFnPOCQueue633B7992",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "Auth0AccountSetupPOCHandlerServiceRoleDefaultPolicyD3FA7E20",
+    "Roles": [
+     {
+      "Ref": "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "Auth0AccountSetupPOCHandler962CE76A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-434343955077-ap-southeast-1",
+     "S3Key": "2adb4308668fc10cd1abaf19d8ee437c4484df00a392d694575f81f137187462.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "QUEUE_URL": {
+       "Ref": "IdentityFnPOCQueue633B7992"
+      },
+      "REGION": "ap-southeast-1",
+      "NOTIFICATION_EMAIL_QUEUE": "NOTIFICATION_EMAIL_QUEUE",
+      "AUTH0_DOMAIN": "https://sandbox-id.pulsifi.me/",
+      "AUTH0_API_AUDIENCE": "https://sandbox.api.pulsifi.me/",
+      "AUTH0_MANAGEMENT_AUDIENCE": "https://sandbox.api.pulsifi.me/",
+      "AUTH0_M2M_CLIENT_ID": "uydKnETZG8ZDDNbce7NqGZiObZPqySo0",
+      "AUTH0_M2M_CLIENT_SECRET": "IX6JVgrWRyy9X8KxC6fXbGbpZwAs8bflOG41a4qeIYhtfnnPBQ6j4KlZcQDo0MyB",
+      "AUTH0_ENTERPRISE_DOMAIN": "https://sandbox-enterprise-id.pulsifi.me/",
+      "AUTH0_ENTERPRISE_API_AUDIENCE": "https://sandbox.api.pulsifi.me/",
+      "AUTH0_ENTERPRISE_MANAGEMENT_AUDIENCE": "https://pulsifi-sandbox-enterprise.us.auth0.com/api/v2/",
+      "AUTH0_ENTERPRISE_M2M_CLIENT_ID": "uydKnETZG8ZDDNbce7NqGZiObZPqySo0",
+      "AUTH0_ENTERPRISE_M2M_CLIENT_SECRET": "IX6JVgrWRyy9X8KxC6fXbGbpZwAs8bflOG41a4qeIYhtfnnPBQ6j4KlZcQDo0MyB"
+     }
+    },
+    "FunctionName": "auth0-account-setup-poc",
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Tags": [
+     {
+      "Key": "Stack",
+      "Value": "identity-fn-sandbox-stack"
+     }
+    ],
+    "Timeout": 30
+   },
+   "DependsOn": [
+    "Auth0AccountSetupPOCHandlerServiceRoleDefaultPolicyD3FA7E20",
+    "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/Resource",
+    "aws:asset:path": "/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "Auth0AccountSetupPOCHandlerSqsEventSourceCdkAuth0PocStackIdentityFnPOCQueue5D37D7640254ABC1": {
+   "Type": "AWS::Lambda::EventSourceMapping",
+   "Properties": {
+    "EventSourceArn": {
+     "Fn::GetAtt": [
+      "IdentityFnPOCQueue633B7992",
+      "Arn"
+     ]
+    },
+    "FunctionName": {
+     "Ref": "Auth0AccountSetupPOCHandler962CE76A"
+    },
+    "Tags": [
+     {
+      "Key": "Stack",
+      "Value": "identity-fn-sandbox-stack"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/SqsEventSource:CdkAuth0PocStackIdentityFnPOCQueue5D37D764/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/91UTU8jMQz9LeSIQpaP1WrFra1A4gBiKdIeqqpyE89gyDglH4XZUf/7KtNJoYKVOK80UibPfrZjv+RUnfz8oY4P4CUcafN0ZGmpumkE/SThJSy68BxU9ythwlkn1hRoSZZie08NuhTFuTgUUlRUOXEefUIpnrPvDTTY2zZzOam452+khWZpYMHO4GNQN/1ymVhHcjzrhE8caeBJgRx9O/w/ABuLftjFvdwNNs63U/pTiNUQcVdDjrUm77hBLqxlYmOJa3HeiYaYqrbUH1zyGq9hVYAIvsbCw9eInsFeO5MshgE1WBEPB5ZCO1P+uy9+/8nZN3NJ0KjuztksFwghNWjGbc608sSaVmBHWru0K2brkwmjvvLSxAYYajS3zpKmnGzW7WHtyA++89w/MObe3ZYUW4/MGawxgn64YkuMO5s4FF8w/jtur+xcuNzCmbMLd++y5UOWj7Ax0wgR83jCu4I/gft821QbGc4WEALGoEZ5keFMjZN+wjiGgLP5cNVUN6m43DB5sUaO0zLiFXE96/YnvISoH97JqYHXcYaI69/Exr284RPHOnmPrItQPa6cj73/VcTmEsgmv5MJMiwtmrJ7K6XMMb8iNqIPe7sL1r5d7YSRJR896TBxXFH97on5eLjNRt7hVtF9u2XfqWmEOhtlfoXUY/i2Pj1VJ9/V8cFjIDoa7qG6265/AfIK87EeBQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

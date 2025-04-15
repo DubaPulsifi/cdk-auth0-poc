@@ -1,0 +1,392 @@
+{
+  "version": "40.0.0",
+  "artifacts": {
+    "CdkAuth0PocStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "CdkAuth0PocStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "CdkAuth0PocStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://434343955077/ap-southeast-1",
+      "properties": {
+        "templateFile": "CdkAuth0PocStack.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "Stack": "identity-fn-sandbox-stack"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-deploy-role-434343955077-ap-southeast-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-cfn-exec-role-434343955077-ap-southeast-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/0482bdb0a21b2f7b2b1921e4cb17a19c27d6bf97f9abca6ac385153697c67ba8.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "CdkAuth0PocStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-lookup-role-434343955077-ap-southeast-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        },
+        "stackName": "identity-fn-sandbox-stack"
+      },
+      "dependencies": [
+        "CdkAuth0PocStack.assets"
+      ],
+      "metadata": {
+        "/CdkAuth0PocStack": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "If you are relying on AWS SDK v2 to be present in the Lambda environment already, please explicitly configure a NodeJS runtime of Node 16 or lower. [ack: @aws-cdk/aws-lambda-nodejs:sdkV2NotInRuntime]",
+            "trace": [
+              "Annotations.addMessage (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1608)",
+              "Annotations.addWarningV2 (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/core/lib/annotations.js:1:825)",
+              "new Bundling (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:3762)",
+              "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
+              "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
+              "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:63:16)",
+              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:25:33)",
+              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
+              "Module._compile (node:internal/modules/cjs/loader:1554:14)",
+              "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
+              "node:internal/modules/cjs/loader:1706:10",
+              "Object.require.extensions.<computed> [as .ts] (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1621:12)",
+              "Module.load (node:internal/modules/cjs/loader:1289:32)",
+              "Function._load (node:internal/modules/cjs/loader:1108:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:220:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+              "phase4 (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:649:14)",
+              "bootstrap (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:95:10)",
+              "main (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:55:10)",
+              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:800:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1554:14)",
+              "Object.<anonymous> (node:internal/modules/cjs/loader:1706:10)",
+              "Module.load (node:internal/modules/cjs/loader:1289:32)",
+              "Function._load (node:internal/modules/cjs/loader:1108:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:220:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+              "node:internal/main/run_main_module:36:49"
+            ]
+          },
+          {
+            "type": "aws:cdk:warning",
+            "data": "When using NODEJS_LATEST the runtime version may change as new runtimes are released, this may affect the availability of packages shipped with the environment. Ensure that any external dependencies are available through layers or specify a specific runtime version. [ack: @aws-cdk/aws-lambda-nodejs:variableRuntimeExternals]",
+            "trace": [
+              "Annotations.addMessage (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1608)",
+              "Annotations.addWarningV2 (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/core/lib/annotations.js:1:825)",
+              "new Bundling (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:4046)",
+              "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
+              "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
+              "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:63:16)",
+              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:25:33)",
+              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
+              "Module._compile (node:internal/modules/cjs/loader:1554:14)",
+              "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
+              "node:internal/modules/cjs/loader:1706:10",
+              "Object.require.extensions.<computed> [as .ts] (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1621:12)",
+              "Module.load (node:internal/modules/cjs/loader:1289:32)",
+              "Function._load (node:internal/modules/cjs/loader:1108:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:220:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+              "phase4 (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:649:14)",
+              "bootstrap (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:95:10)",
+              "main (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:55:10)",
+              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/bin.ts:800:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1554:14)",
+              "Object.<anonymous> (node:internal/modules/cjs/loader:1706:10)",
+              "Module.load (node:internal/modules/cjs/loader:1289:32)",
+              "Function._load (node:internal/modules/cjs/loader:1108:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:220:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+              "node:internal/main/run_main_module:36:49"
+            ]
+          },
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "Stack",
+                "Value": "identity-fn-sandbox-stack"
+              }
+            ]
+          }
+        ],
+        "/CdkAuth0PocStack/IdentityFnPOCQueue": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "visibilityTimeout": "*",
+              "fifo": true,
+              "queueName": "*"
+            }
+          }
+        ],
+        "/CdkAuth0PocStack/IdentityFnPOCQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "IdentityFnPOCQueue633B7992"
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "runtime": "*",
+              "entry": "*",
+              "handler": "*",
+              "timeout": "*",
+              "memorySize": "*",
+              "functionName": "*",
+              "environment": "*",
+              "bundling": {
+                "minify": true,
+                "sourceMap": true,
+                "target": "*",
+                "externalModules": "*",
+                "define": "*"
+              },
+              "code": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "runtime": "*",
+              "entry": "*",
+              "handler": "*",
+              "timeout": "*",
+              "memorySize": "*",
+              "functionName": "*",
+              "environment": "*",
+              "bundling": {
+                "minify": true,
+                "sourceMap": true,
+                "target": "*",
+                "externalModules": "*",
+                "define": "*"
+              }
+            }
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                }
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/ImportServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB"
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/DefaultPolicy": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Auth0AccountSetupPOCHandlerServiceRoleDefaultPolicyD3FA7E20"
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Auth0AccountSetupPOCHandler962CE76A"
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/SqsEventSource:CdkAuth0PocStackIdentityFnPOCQueue5D37D764": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "target": "*",
+              "batchSize": "*",
+              "maxBatchingWindow": "*",
+              "maxConcurrency": "*",
+              "reportBatchItemFailures": "*",
+              "enabled": "*",
+              "eventSourceArn": "*",
+              "filters": "*",
+              "filterEncryption": "*",
+              "metricsConfig": "*"
+            }
+          }
+        ],
+        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/SqsEventSource:CdkAuth0PocStackIdentityFnPOCQueue5D37D764/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Auth0AccountSetupPOCHandlerSqsEventSourceCdkAuth0PocStackIdentityFnPOCQueue5D37D7640254ABC1"
+          }
+        ],
+        "/CdkAuth0PocStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/CdkAuth0PocStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/CdkAuth0PocStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "CdkAuth0PocStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
