@@ -90,3 +90,21 @@ export const createPasswordChangeTicketUrl = async (
         throw error;
     }
 }
+
+export const deleteAuth0User = async (email: string, tenant: Auth0Tenant,) => {
+    const client = await getManagementClient(tenant);
+
+    try {
+        const user = await client.getUsersByEmail(email);
+
+        if (!user || !user.length) {
+            return false;
+        }
+
+       await client.deleteUser({ id: user[0].user_id as string });
+
+        return true;;
+    } catch (error) {
+        throw error;
+    }
+}

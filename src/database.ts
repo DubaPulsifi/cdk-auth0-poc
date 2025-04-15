@@ -60,7 +60,7 @@ const createDataSource = async (
     type: 'postgres',
     host: dbSecret.host,
     port: dbSecret.port,
-    username: dbSecret.iam_username,
+    username: dbSecret.username, // dbSecret.iam_username,
     password,
     database: dbSecret.dbname,
     schema: dbSecret.schema,
@@ -75,7 +75,7 @@ const createDataSource = async (
       max: 1,
       ssl: {
         rejectUnauthorized: true,
-        ca: dbCaCert,
+        // ca: dbCaCert, 
       },
     },
     logging: ['error'],
@@ -88,14 +88,14 @@ export const initDataSource = async (): Promise<DataSource> => {
   }
 
   const dbSecret = await getDBSecrets();
-  const dbCaCert = await getDatabaseCertificateString(dbSecret);
+  // const dbCaCert = await getDatabaseCertificateString(dbSecret);
   const password = await getDBAuthToken(
     dbSecret.host,
     dbSecret.port,
     dbSecret.iam_username,
   );
 
-  dataSource = await createDataSource(dbSecret, password, dbCaCert);
+  dataSource = await createDataSource(dbSecret, dbSecret.password, '');
   return dataSource;
 };
 

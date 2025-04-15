@@ -11,6 +11,7 @@ export const handler = async (event: SQSEvent): Promise<void> => {
             
             // Your processing logic here
             const payload: ICreateAuth0UserDto = JSON.parse(record.body);
+
             const auth0User = await createAuth0User(payload.data, payload.tenant);
             const updatedUser = await updateUser({
                 auth0Id: auth0User.user_id as string,

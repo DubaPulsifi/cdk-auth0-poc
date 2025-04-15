@@ -9,3 +9,20 @@ export interface ICreateAuth0UserDto {
   }
 
   export type WebAppUrl = Record<WebApp, string>;
+
+  export interface SqsConfig {
+    apiVersion: string;
+    region: string;
+    queueUrl: string;
+}
+export interface SnsConfig {
+    apiVersion: string;
+    region: string;
+    topic: string;
+}
+export interface S3Config {
+    apiVersion: string;
+    bucketName: string;
+    region: string;
+    pulsifiDomain?: string;
+}

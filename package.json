@@ -10,7 +10,8 @@
       "test": "jest",
       "cdk": "cdk",
       "start": "ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "typeorm": "typeorm-ts-node-commonjs",
+      "start:debug": "ts-node-dev --inspect --respawn local-debug.ts"
    },
    "devDependencies": {
       "@types/auth0": "3.3.10",
@@ -24,6 +25,7 @@
    },
    "dependencies": {
       "@aws-sdk/client-secrets-manager": "^3.787.0",
+      "@aws-sdk/client-sqs": "^3.787.0",
       "@aws-sdk/client-ssm": "^3.787.0",
       "@aws-sdk/rds-signer": "^3.787.0",
       "@pulsifi/fn": "^3.9.0",

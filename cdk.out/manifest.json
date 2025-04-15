@@ -21,7 +21,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-deploy-role-434343955077-ap-southeast-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-cfn-exec-role-434343955077-ap-southeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/0482bdb0a21b2f7b2b1921e4cb17a19c27d6bf97f9abca6ac385153697c67ba8.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/292dc291c47bbc1f040ffc19acf4d6ccc68b77b8724bc5f0dfc7c6ca9ee1a0cc.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -49,7 +49,7 @@
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
               "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:63:16)",
-              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:25:33)",
+              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:28:54)",
               "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
@@ -84,7 +84,7 @@
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
               "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:63:16)",
-              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:25:33)",
+              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:28:54)",
               "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
@@ -209,6 +209,18 @@
             "data": {}
           },
           {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
             "type": "aws:cdk:analytics:construct",
             "data": {
               "runtime": "*",
@@ -274,6 +286,22 @@
                 {}
               ]
             }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
           }
         ],
         "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/ImportServiceRole": [
@@ -306,6 +334,22 @@
             "data": {
               "attachToRole": [
                 "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
               ]
             }
           },

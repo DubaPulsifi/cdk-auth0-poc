@@ -5,6 +5,7 @@ import { LambdaBuilder } from "./build";
 import path = require("path");
 import { Queue } from "aws-cdk-lib/aws-sqs";
 import { Duration, Stack, StackProps } from "aws-cdk-lib";
+import { Secret } from "aws-cdk-lib/aws-secretsmanager";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class CdkAuth0PocStack extends Stack {
@@ -22,15 +23,20 @@ export class CdkAuth0PocStack extends Stack {
       queueName: "identity-fn-poc-queue.fifo",
     });
 
-    const hello = lambdaBuilder.createQueueProcessor(
+    const dbSecret = Secret.fromSecretNameV2(this, 'DBSecret', 'identity-postgresql-credential');
+
+    const auth0AccountSetupPOCLambda = lambdaBuilder.createQueueProcessor(
       "Auth0AccountSetupPOCHandler",
       queue,
       {
         fileName: "auth0-account-setup-poc.ts",
         name: "auth0-account-setup-poc",
         environment: {
+          SM_NAME: "identity-postgresql-credential",
           REGION: process.env.CDK_DEPLOY_REGION as string,
           NOTIFICATION_EMAIL_QUEUE: "NOTIFICATION_EMAIL_QUEUE",
+          SENTRY_DSN: "https://b79130468ac5a32c12a79256a7812582@o157451.ingest.us.sentry.io/4508103154728960",
+          SERVERLESS_STAGE: "development",
           AUTH0_DOMAIN: "https://sandbox-id.pulsifi.me/",
           AUTH0_API_AUDIENCE: "https://sandbox.api.pulsifi.me/",
           AUTH0_MANAGEMENT_AUDIENCE: "https://sandbox.api.pulsifi.me/",
@@ -47,5 +53,8 @@ export class CdkAuth0PocStack extends Stack {
         },
       }
     );
+
+    dbSecret.grantRead(auth0AccountSetupPOCLambda);
+    dbSecret.grantWrite(auth0AccountSetupPOCLambda);
   }
 }
