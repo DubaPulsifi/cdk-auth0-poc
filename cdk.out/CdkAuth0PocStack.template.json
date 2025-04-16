@@ -205,7 +205,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-434343955077-ap-southeast-1",
-     "S3Key": "f1ddcd56d3d942753526fa2cdcb047bdb15fe8a033bcb0e1018466be099f5c9a.zip"
+     "S3Key": "16bb465411682fbb83cd16d7cbd23e4ae217b08480debfcd8578d559fc02dd61.zip"
     },
     "Environment": {
      "Variables": {
@@ -273,7 +273,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/Resource",
-    "aws:asset:path": "asset.f1ddcd56d3d942753526fa2cdcb047bdb15fe8a033bcb0e1018466be099f5c9a",
+    "aws:asset:path": "asset.16bb465411682fbb83cd16d7cbd23e4ae217b08480debfcd8578d559fc02dd61",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }

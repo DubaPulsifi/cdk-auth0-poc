@@ -53,7 +53,7 @@ const getAuth0UserInviteLinkVariable = async (
     throw new Error("External auth0 user id must not be empty!");
   }
 
-  const url = createPasswordChangeTicketUrl(
+  const url = await createPasswordChangeTicketUrl(
     auth0UserId,
     webAppUrl,
     auth0Tenant
