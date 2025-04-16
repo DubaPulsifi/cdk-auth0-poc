@@ -1,44 +1,46 @@
 {
   "version": "40.0.0",
   "artifacts": {
-    "CdkAuth0PocStack.assets": {
+    "IdentityFnUserRegistrationStack.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "CdkAuth0PocStack.assets.json",
+        "file": "IdentityFnUserRegistrationStack.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "CdkAuth0PocStack": {
+    "IdentityFnUserRegistrationStack": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://434343955077/ap-southeast-1",
       "properties": {
-        "templateFile": "CdkAuth0PocStack.template.json",
+        "templateFile": "IdentityFnUserRegistrationStack.template.json",
         "terminationProtection": false,
         "tags": {
-          "Stack": "identity-fn-sandbox-stack"
+          "Environment": "sandbox",
+          "Owner": "dev-team@pulsifi.me",
+          "Stack": "identity-fn-user-registration-sandbox-stack"
         },
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-deploy-role-434343955077-ap-southeast-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-cfn-exec-role-434343955077-ap-southeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/dd76d066b006fd3a39f3c5ed3ea152b3600600f18591c8351698c149ca618c66.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/3f6ab5038c1323aa51473556d9b819e771c5e4e673a9ba9f50e1e05408379505.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "CdkAuth0PocStack.assets"
+          "IdentityFnUserRegistrationStack.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-lookup-role-434343955077-ap-southeast-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         },
-        "stackName": "identity-fn-sandbox-stack"
+        "stackName": "identity-fn-user-registration-sandbox-stack"
       },
       "dependencies": [
-        "CdkAuth0PocStack.assets"
+        "IdentityFnUserRegistrationStack.assets"
       ],
       "metadata": {
-        "/CdkAuth0PocStack": [
+        "/IdentityFnUserRegistrationStack": [
           {
             "type": "aws:cdk:warning",
             "data": "If you are relying on AWS SDK v2 to be present in the Lambda environment already, please explicitly configure a NodeJS runtime of Node 16 or lower. [ack: @aws-cdk/aws-lambda-nodejs:sdkV2NotInRuntime]",
@@ -49,8 +51,8 @@
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
               "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:65:16)",
-              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:46:54)",
-              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
+              "new IdentityFnUserRegistrationStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/identity-fn-user-registration-stack.ts:46:60)",
+              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/app.ts:10:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
               "node:internal/modules/cjs/loader:1706:10",
@@ -84,8 +86,8 @@
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
               "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:65:16)",
-              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:46:54)",
-              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
+              "new IdentityFnUserRegistrationStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/identity-fn-user-registration-stack.ts:46:60)",
+              "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/app.ts:10:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
               "node:internal/modules/cjs/loader:1706:10",
@@ -113,13 +115,21 @@
             "type": "aws:cdk:stack-tags",
             "data": [
               {
+                "Key": "Environment",
+                "Value": "sandbox"
+              },
+              {
+                "Key": "Owner",
+                "Value": "dev-team@pulsifi.me"
+              },
+              {
                 "Key": "Stack",
-                "Value": "identity-fn-sandbox-stack"
+                "Value": "identity-fn-user-registration-sandbox-stack"
               }
             ]
           }
         ],
-        "/CdkAuth0PocStack/IdentityFnPOCQueue": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationQueue": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": {
@@ -129,55 +139,55 @@
             }
           }
         ],
-        "/CdkAuth0PocStack/IdentityFnPOCQueue/Resource": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationQueue/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "IdentityFnPOCQueue633B7992"
+            "data": "IdentityFnUserRegistrationQueueAAB73A3E"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/VPC": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet1": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet1": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet2": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet2": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet3": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet3": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet1": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet1": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet2": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet2": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet3": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet3": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/SecurityGroup": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": {
@@ -189,31 +199,31 @@
             }
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup/Resource": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/SecurityGroup/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup/to 0.0.0.0_0:ALL TRAFFIC": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/security-group-resources-security-group/SecurityGroup/to 0.0.0.0_0:ALL TRAFFIC": [
           {
             "type": "aws:cdk:logicalId",
             "data": "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupto00000ALLTRAFFICE5CA3F52"
           }
         ],
-        "/CdkAuth0PocStack/security-group-resources/db-target-security-group/from CdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D39358:5432": [
+        "/IdentityFnUserRegistrationStack/security-group-resources/db-target-security-group/from IdentityFnUserRegistrationStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupBDB91FB7:5432": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "securitygroupresourcesdbtargetsecuritygroupfromCdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D3935854323FA3390A"
+            "data": "securitygroupresourcesdbtargetsecuritygroupfromIdentityFnUserRegistrationStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupBDB91FB754326F430D20"
           }
         ],
-        "/CdkAuth0PocStack/SsmParameterValue:--configs--api--AWS_SQS_BASE_DNS:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+        "/IdentityFnUserRegistrationStack/SsmParameterValue:--configs--api--AWS_SQS_BASE_DNS:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
           {
             "type": "aws:cdk:logicalId",
             "data": "SsmParameterValueconfigsapiAWSSQSBASEDNSC96584B6F00A464EAD1953AFF4B05118Parameter"
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": {
@@ -326,7 +336,7 @@
             }
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/ServiceRole": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": {
@@ -401,19 +411,19 @@
             }
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/ImportServiceRole": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/ServiceRole/ImportServiceRole": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/Resource": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB"
+            "data": "IdentityFnUserRegistrationHandlerServiceRole6904CFF3"
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/DefaultPolicy": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/ServiceRole/DefaultPolicy": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
@@ -475,19 +485,19 @@
             }
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/DefaultPolicy/Resource": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Auth0AccountSetupPOCHandlerServiceRoleDefaultPolicyD3FA7E20"
+            "data": "IdentityFnUserRegistrationHandlerServiceRoleDefaultPolicy03BCF6A1"
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/Resource": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Auth0AccountSetupPOCHandler962CE76A"
+            "data": "IdentityFnUserRegistrationHandler8C99D874"
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/SqsEventSource:CdkAuth0PocStackIdentityFnPOCQueue5D37D764": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/SqsEventSource:IdentityFnUserRegistrationStackIdentityFnUserRegistrationQueueC3B80897": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": {
@@ -504,32 +514,32 @@
             }
           }
         ],
-        "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler/SqsEventSource:CdkAuth0PocStackIdentityFnPOCQueue5D37D764/Resource": [
+        "/IdentityFnUserRegistrationStack/IdentityFnUserRegistrationHandler/SqsEventSource:IdentityFnUserRegistrationStackIdentityFnUserRegistrationQueueC3B80897/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Auth0AccountSetupPOCHandlerSqsEventSourceCdkAuth0PocStackIdentityFnPOCQueue5D37D7640254ABC1"
+            "data": "IdentityFnUserRegistrationHandlerSqsEventSourceIdentityFnUserRegistrationStackIdentityFnUserRegistrationQueueC3B808977F493688"
           }
         ],
-        "/CdkAuth0PocStack/CDKMetadata/Default": [
+        "/IdentityFnUserRegistrationStack/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/CdkAuth0PocStack/BootstrapVersion": [
+        "/IdentityFnUserRegistrationStack/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/CdkAuth0PocStack/CheckBootstrapVersion": [
+        "/IdentityFnUserRegistrationStack/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "CdkAuth0PocStack"
+      "displayName": "IdentityFnUserRegistrationStack"
     },
     "Tree": {
       "type": "cdk:tree",

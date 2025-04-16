@@ -1,8 +1,8 @@
 {
-   "name": "cdk-auth0-poc",
+   "name": "identity-fn",
    "version": "0.1.0",
    "bin": {
-      "cdk-auth0-poc": "cdk/bin/cdk-auth0-poc.js"
+      "app": "cdk/bin/app.js"
    },
    "scripts": {
       "build": "tsc",

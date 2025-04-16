@@ -1,21 +1,21 @@
 {
   "version": "40.0.0",
   "files": {
-    "16bb465411682fbb83cd16d7cbd23e4ae217b08480debfcd8578d559fc02dd61": {
+    "8143c99fec88365dde57090bdabe77755003c757ae43f6c7b0544fc1697fd81c": {
       "source": {
-        "path": "asset.16bb465411682fbb83cd16d7cbd23e4ae217b08480debfcd8578d559fc02dd61",
+        "path": "asset.8143c99fec88365dde57090bdabe77755003c757ae43f6c7b0544fc1697fd81c",
         "packaging": "zip"
       },
       "destinations": {
         "434343955077-ap-southeast-1": {
           "bucketName": "cdk-hnb659fds-assets-434343955077-ap-southeast-1",
-          "objectKey": "16bb465411682fbb83cd16d7cbd23e4ae217b08480debfcd8578d559fc02dd61.zip",
+          "objectKey": "8143c99fec88365dde57090bdabe77755003c757ae43f6c7b0544fc1697fd81c.zip",
           "region": "ap-southeast-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-file-publishing-role-434343955077-ap-southeast-1"
         }
       }
     },
-    "dd76d066b006fd3a39f3c5ed3ea152b3600600f18591c8351698c149ca618c66": {
+    "91a13e77131d3768980cd64fe5fb096ca1de23d9cb30b57684d92838dc28b19b": {
       "source": {
         "path": "CdkAuth0PocStack.template.json",
         "packaging": "file"
@@ -23,7 +23,7 @@
       "destinations": {
         "434343955077-ap-southeast-1": {
           "bucketName": "cdk-hnb659fds-assets-434343955077-ap-southeast-1",
-          "objectKey": "dd76d066b006fd3a39f3c5ed3ea152b3600600f18591c8351698c149ca618c66.json",
+          "objectKey": "91a13e77131d3768980cd64fe5fb096ca1de23d9cb30b57684d92838dc28b19b.json",
           "region": "ap-southeast-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-file-publishing-role-434343955077-ap-southeast-1"
         }

@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
 
-import { handler } from "./cdk/infra/lambda/auth0-account-setup-poc";
+import { handler } from "./cdk/infra/lambda/identity-fn-user-registration";
 import { Auth0Database, Auth0Tenant } from "./src/shared";
 import { generatorUtil } from "@pulsifi/fn/utils/generator.util";
 import { deleteAuth0User } from "./src/services";

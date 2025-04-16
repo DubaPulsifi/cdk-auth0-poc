@@ -10,7 +10,7 @@ import { SecurityGroupResources } from "./security-groups";
 import { StringParameter } from "aws-cdk-lib/aws-ssm";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
-export class CdkAuth0PocStack extends Stack {
+export class IdentityFnUserRegistrationStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
@@ -19,10 +19,10 @@ export class CdkAuth0PocStack extends Stack {
       path.join(__dirname, "../infra/lambda")
     );
 
-    const queue = new Queue(this, "IdentityFnPOCQueue", {
+    const queue = new Queue(this, "IdentityFnUserRegistrationQueue", {
       visibilityTimeout: Duration.seconds(300),
       fifo: true,
-      queueName: "identity-fn-poc-queue.fifo",
+      queueName: "identity-fn-user-registration-queue.fifo",
     });
 
     const notificationQueue = Queue.fromQueueArn(
@@ -43,12 +43,12 @@ export class CdkAuth0PocStack extends Stack {
       "identity-postgresql-credential"
     );
 
-    const auth0AccountSetupPOCLambda = lambdaBuilder.createQueueProcessor(
-      "Auth0AccountSetupPOCHandler",
+    const identityFnUserRegistrationLambda = lambdaBuilder.createQueueProcessor(
+      "IdentityFnUserRegistrationHandler",
       queue,
       {
-        fileName: "auth0-account-setup-poc.ts",
-        name: "auth0-account-setup-poc",
+        fileName: "identity-fn-user-registration.ts",
+        name: "identity-fn-user-registration",
         securityGroups: securityGroupResources,
         environment: {
           SM_NAME: "identity-postgresql-credential",
@@ -77,11 +77,11 @@ export class CdkAuth0PocStack extends Stack {
       }
     );
 
-    dbSecret.grantRead(auth0AccountSetupPOCLambda);
-    dbSecret.grantWrite(auth0AccountSetupPOCLambda);
+    dbSecret.grantRead(identityFnUserRegistrationLambda);
+    dbSecret.grantWrite(identityFnUserRegistrationLambda);
 
-    notificationQueue.grantSendMessages(auth0AccountSetupPOCLambda);
+    notificationQueue.grantSendMessages(identityFnUserRegistrationLambda);
 
-    auth0AccountSetupPOCLambda.node.addDependency(securityGroupResources);
+    identityFnUserRegistrationLambda.node.addDependency(securityGroupResources);
   }
 }

@@ -7,7 +7,7 @@ import { Port, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 
-const name = 'auth0-poc-app'
+const name = 'identity-fn';
 
 export class SecurityGroupResources extends Construct {
   public readonly securityGroup: CustomSecurityGroupConstruct;
