@@ -78,7 +78,7 @@ export class LambdaBuilder {
       bundling: {
         minify: true,
         sourceMap: true,
-        target: 'node18',
+        target: 'node20',
         externalModules: [
           'aws-sdk',
           '@aws-sdk/*',

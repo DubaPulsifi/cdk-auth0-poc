@@ -11,22 +11,25 @@ const testEvent = {
     {
       body: JSON.stringify({
         data: {
-          email: "test001@bulk.com",
+          email: "bulk.test.010@yopmail.com",
           email_verified: true,
-          password: generatorUtil.password(18),
+          password: "j~J<DsAxGSX&5F^4m4",
           given_name: "John",
           family_name: "Doe",
           name: "John Doe",
           app_metadata: {
-            user_account_id: 41988,
+            user_account_id: 42225,
           },
-          user_metadata: { locale: "en-US", timezone: "Europe/Istanbul" },
-          connection: Auth0Database.TALENT,
+          user_metadata: {
+            locale: "en-US",
+            timezone: "Europe/Istanbul",
+          },
+          connection: "talent-database",
         },
         tenant: "Enterprise",
         company: {
-          id: "308",
-          name: "Test Company",
+          id: 308,
+          name: "APItude SANDBOX",
         },
       }),
       messageId: "test-id",
@@ -51,7 +54,7 @@ async function debugHandler() {
     console.log(JSON.parse(testEvent.Records[0].body));
 
     const deleteResult = await deleteAuth0User(
-      "test001@bulk.com",
+      "bulk.test.011@yopmail.com",
       Auth0Tenant.ENTERPRISE
     );
     console.log("Delete Success:", deleteResult);

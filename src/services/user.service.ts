@@ -5,9 +5,17 @@ import {
   getManagementClient,
 } from "./auth.service";
 import { sqsService } from "@pulsifi/fn/services/sqs.service";
-import { EmailActivityMessageRecipientGroup, EmailRequest, TemplateVariable } from "@pulsifi/fn/interfaces";
 import {
-  EmailTemplateCommunicationType, Auth0Tenant, WebApp, WebAppToApplicationIdMappings } from "../shared";
+  EmailActivityMessageRecipientGroup,
+  EmailRequest,
+  TemplateVariable,
+} from "@pulsifi/fn/interfaces";
+import {
+  EmailTemplateCommunicationType,
+  Auth0Tenant,
+  WebApp,
+  WebAppToApplicationIdMappings,
+} from "../shared";
 import { awsConfig, webAppUrlConfig } from "../shared/config";
 import { getDataSource } from "../database";
 import { UserAccount, UserInvitation } from "../entity";
@@ -24,7 +32,11 @@ export const updateUser = async (updateData: IUpdateUserDto) => {
     picture_url: updateData.picture,
   });
 
-  return updatedUser;
+  return userRepo.findOneOrFail({
+    where: {
+      id: updateData.userAccountId,
+    },
+  });
 };
 
 const getSsoUserInviteLinkVariable = (

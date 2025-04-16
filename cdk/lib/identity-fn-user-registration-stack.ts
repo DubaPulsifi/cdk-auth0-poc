@@ -21,8 +21,7 @@ export class IdentityFnUserRegistrationStack extends Stack {
 
     const queue = new Queue(this, "IdentityFnUserRegistrationQueue", {
       visibilityTimeout: Duration.seconds(300),
-      fifo: true,
-      queueName: "identity-fn-user-registration-queue.fifo",
+      queueName: "identity-fn-user-registration-queue",
     });
 
     const notificationQueue = Queue.fromQueueArn(

@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-deploy-role-434343955077-ap-southeast-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-cfn-exec-role-434343955077-ap-southeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/3f6ab5038c1323aa51473556d9b819e771c5e4e673a9ba9f50e1e05408379505.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/cf3d96efdf194fbe82bc6cd638f9027c5e00b586a7f09d415ecb96f903469820.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -51,7 +51,7 @@
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
               "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:65:16)",
-              "new IdentityFnUserRegistrationStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/identity-fn-user-registration-stack.ts:46:60)",
+              "new IdentityFnUserRegistrationStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/identity-fn-user-registration-stack.ts:45:60)",
               "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/app.ts:10:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
@@ -86,7 +86,7 @@
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
               "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:65:16)",
-              "new IdentityFnUserRegistrationStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/identity-fn-user-registration-stack.ts:46:60)",
+              "new IdentityFnUserRegistrationStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/identity-fn-user-registration-stack.ts:45:60)",
               "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/app.ts:10:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
@@ -134,7 +134,6 @@
             "type": "aws:cdk:analytics:construct",
             "data": {
               "visibilityTimeout": "*",
-              "fifo": true,
               "queueName": "*"
             }
           }
