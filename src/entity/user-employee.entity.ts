@@ -14,7 +14,7 @@ export class UserEmployeeGroup {
     name!: string;
 }
 
-@Entity()
+@Entity('user_employee')
 export class UserEmployee extends AuditDataEntity {
     @PrimaryGeneratedColumn()
     id!: number;

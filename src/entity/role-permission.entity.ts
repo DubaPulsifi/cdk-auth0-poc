@@ -9,7 +9,7 @@ import {
 import { RoleLookup } from './role-lookup.entity';
 import { EnumColumn, IntegerColumn, SoftDeleteColumn, TextColumn, AuditDataEntity, RbacResourceRestrictionPolicy, RbacStatus } from '../shared';
 
-@Entity()
+@Entity('role_permission')
 export class RolePermission extends AuditDataEntity {
     @PrimaryGeneratedColumn('uuid')
     id!: string;

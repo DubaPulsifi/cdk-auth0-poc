@@ -7,9 +7,9 @@ import {
 } from 'typeorm';
 
 import { UserAccount } from './user-account.entity';
-import { EnumColumn, IntegerColumn, TextColumn, AppModule, AuditDataEntity, WebApp  } from '../shared';
+import { EnumColumn, IntegerColumn, TextColumn, AppModule, AuditDataEntity, WebApp, StringColumn  } from '../shared';
 
-@Entity()
+@Entity('user_application')
 export class UserApplication extends AuditDataEntity {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -30,7 +30,7 @@ export class UserApplication extends AuditDataEntity {
     })
     app!: WebApp;
 
-    @TextColumn({
+    @StringColumn({
         length: 100,
     })
     role!: string;

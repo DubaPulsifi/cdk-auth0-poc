@@ -10,6 +10,7 @@ import {
   IntegerColumn,
   JsonColumn,
   TextColumn,
+  StringColumn,
 } from "../shared";
 import { SsoDomain } from "./sso-domain.entity";
 
@@ -56,7 +57,7 @@ export class CompanyInternalContact {
   email!: string;
 }
 
-@Entity()
+@Entity('company')
 export class Company extends AuditDataEntity {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -64,12 +65,13 @@ export class Company extends AuditDataEntity {
   @IntegerColumn()
   parent_company_id!: number;
 
-  @TextColumn({
+  @StringColumn({
     length: 255,
   })
   name!: string;
 
-  @TextColumn({
+  @StringColumn({
+    type: 'varchar',
     length: 100,
   })
   slug!: string;
@@ -86,13 +88,14 @@ export class Company extends AuditDataEntity {
   })
   status!: CompanyStatus;
 
-  @TextColumn({
+  @StringColumn({
+    type: 'varchar',
     nullable: true,
     length: 50,
   })
   tenant_region?: string;
 
-  @TextColumn({
+  @StringColumn({
     type: String,
     length: 1000,
     nullable: true,
@@ -102,7 +105,7 @@ export class Company extends AuditDataEntity {
   /**
    * @deprecated Please use the domain in SsoDomain entity
    */
-  @TextColumn({
+  @StringColumn({
     type: String,
     nullable: true,
     length: 255,
@@ -112,14 +115,14 @@ export class Company extends AuditDataEntity {
   @JsonColumn()
   industries!: CompanyIndustry[];
 
-  @TextColumn({
+  @StringColumn({
     type: String,
     nullable: true,
     length: 500,
   })
   logo_url?: string | null;
 
-  @TextColumn({
+  @StringColumn({
     type: String,
     nullable: true,
     length: 500,
@@ -129,7 +132,7 @@ export class Company extends AuditDataEntity {
   @JsonColumn({ nullable: true })
   products?: CompanyProduct[];
 
-  @Column({
+  @StringColumn({
     type: "boolean",
     default: false,
   })
@@ -144,7 +147,7 @@ export class Company extends AuditDataEntity {
   @JsonColumn({ nullable: true })
   locales?: CompanyLocale[];
 
-  @TextColumn({
+  @StringColumn({
     length: 50,
     nullable: true,
   })

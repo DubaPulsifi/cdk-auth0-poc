@@ -21,7 +21,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-deploy-role-434343955077-ap-southeast-1",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::434343955077:role/cdk-hnb659fds-cfn-exec-role-434343955077-ap-southeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/292dc291c47bbc1f040ffc19acf4d6ccc68b77b8724bc5f0dfc7c6ca9ee1a0cc.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-434343955077-ap-southeast-1/e192a7e7a5d26685a1954ae1326a150d4b695ea9617fa5e0a0c0e25627263753.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -48,8 +48,8 @@
               "new Bundling (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:3762)",
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
-              "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:63:16)",
-              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:28:54)",
+              "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:65:16)",
+              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:46:54)",
               "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
@@ -83,8 +83,8 @@
               "new Bundling (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:4046)",
               "Function.bundle (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/bundling.js:1:1066)",
               "new NodejsFunction (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2288)",
-              "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:63:16)",
-              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:28:54)",
+              "LambdaBuilder.createQueueProcessor (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/build.ts:65:16)",
+              "new CdkAuth0PocStack (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/lib/cdk-auth0-poc-stack.ts:46:54)",
               "Object.<anonymous> (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/cdk/bin/cdk-auth0-poc.ts:9:15)",
               "Module._compile (node:internal/modules/cjs/loader:1554:14)",
               "Module.m._compile (/Users/feyikunmioshodi/Documents/Projects/playground/cdk-auth0-poc/node_modules/ts-node/src/index.ts:1618:23)",
@@ -135,6 +135,84 @@
             "data": "IdentityFnPOCQueue633B7992"
           }
         ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet1": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet2": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PublicSubnet3": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet1": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet2": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/VPC/PrivateSubnet3": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "securityGroupName": "*",
+              "description": "*",
+              "vpc": "*",
+              "allowAllOutbound": true,
+              "disableInlineRules": true
+            }
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup/to 0.0.0.0_0:ALL TRAFFIC": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupto00000ALLTRAFFICE5CA3F52"
+          }
+        ],
+        "/CdkAuth0PocStack/security-group-resources/db-target-security-group/from CdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D39358:5432": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "securitygroupresourcesdbtargetsecuritygroupfromCdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D3935854323FA3390A"
+          }
+        ],
+        "/CdkAuth0PocStack/SsmParameterValue:--configs--api--AWS_SQS_BASE_DNS:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueconfigsapiAWSSQSBASEDNSC96584B6F00A464EAD1953AFF4B05118Parameter"
+          }
+        ],
         "/CdkAuth0PocStack/Auth0AccountSetupPOCHandler": [
           {
             "type": "aws:cdk:analytics:construct",
@@ -145,6 +223,10 @@
               "timeout": "*",
               "memorySize": "*",
               "functionName": "*",
+              "vpc": "*",
+              "securityGroups": [
+                "*"
+              ],
               "environment": "*",
               "bundling": {
                 "minify": true,
@@ -229,6 +311,10 @@
               "timeout": "*",
               "memorySize": "*",
               "functionName": "*",
+              "vpc": "*",
+              "securityGroups": [
+                "*"
+              ],
               "environment": "*",
               "bundling": {
                 "minify": true,
@@ -249,6 +335,9 @@
                 "assumeRoleAction": "*"
               },
               "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                },
                 {
                   "managedPolicyArn": "*"
                 }
@@ -276,6 +365,14 @@
             "data": {
               "attachInlinePolicy": [
                 "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
               ]
             }
           },
@@ -334,6 +431,14 @@
             "data": {
               "attachToRole": [
                 "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
               ]
             }
           },

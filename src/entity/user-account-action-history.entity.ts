@@ -7,9 +7,9 @@ import {
 } from 'typeorm';
 
 import { UserAccount } from './user-account.entity';
-import { IntegerColumn, JsonColumn, TextColumn, AuditDataEntity } from '../shared';
+import { IntegerColumn, JsonColumn, TextColumn, AuditDataEntity, StringColumn } from '../shared';
 
-@Entity()
+@Entity('user_account_action_history')
 export class UserAccountActionHistory extends AuditDataEntity {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -17,7 +17,7 @@ export class UserAccountActionHistory extends AuditDataEntity {
     @IntegerColumn()
     user_account_id!: number;
 
-    @TextColumn({
+    @StringColumn({
         length: 100,
     })
     action_type!: string;
@@ -27,7 +27,7 @@ export class UserAccountActionHistory extends AuditDataEntity {
     })
     value?: object;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
     })
     created_username!: string;

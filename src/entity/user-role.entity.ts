@@ -10,7 +10,7 @@ import { RoleLookup } from './role-lookup.entity';
 import { UserAccount } from './user-account.entity';
 import { EnumColumn, IntegerColumn, SoftDeleteColumn, UuidColumn, AuditDataEntity, RbacStatus } from '../shared';
 
-@Entity()
+@Entity('user_role')
 export class UserRole extends AuditDataEntity {
     @PrimaryGeneratedColumn('uuid')
     id!: string;

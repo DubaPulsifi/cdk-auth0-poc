@@ -6,14 +6,14 @@ import { UserEmployee } from './user-employee.entity';
 import { UserInvitation } from './user-invitation.entity';
 import { UserPreference } from './user-preference.entity';
 import { UserRole } from './user-role.entity';
-import { DateTimeColumn, EnumColumn, JsonColumn, TextColumn, AuditDataEntity, UserExtTenant, UserStatus } from '../shared';
+import { DateTimeColumn, EnumColumn, JsonColumn, TextColumn, AuditDataEntity, UserExtTenant, UserStatus, StringColumn } from '../shared';
 
 export class UserMeta {
     locale?: string; //en
     timezone?: string; //Asia/Kuala_Lumpur
 }
 
-@Entity()
+@Entity('user_account')
 export class UserAccount extends AuditDataEntity {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -23,17 +23,17 @@ export class UserAccount extends AuditDataEntity {
     })
     status!: UserStatus;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
     })
     email!: string;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
     })
     first_name!: string;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
         nullable: true,
     })
@@ -44,19 +44,19 @@ export class UserAccount extends AuditDataEntity {
     })
     ext_tenant!: UserExtTenant;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
         nullable: true,
     })
     ext_user_id?: string;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
         nullable: true,
     })
     ext_connection_name?: string;
 
-    @TextColumn({
+    @StringColumn({
         length: 2048,
         nullable: true,
     })

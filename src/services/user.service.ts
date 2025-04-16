@@ -73,9 +73,8 @@ const getUserInvitationByAppId = async (
   return userInviteRepo
     .createQueryBuilder("ui")
     .leftJoinAndSelect("ui.user_account", "user_account")
-    .where("user_account.user_account_id = :userAccountId", { userAccountId })
+    .where("user_account.id = :userAccountId", { userAccountId })
     .andWhere("ui.app_id = :appId", { appId })
-    .andWhere("ui.is_deleted = :isDeleted", { isDeleted: false })
     .andWhere("ui.accepted_at IS NULL")
     .getOne();
 };

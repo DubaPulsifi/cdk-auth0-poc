@@ -19,6 +19,71 @@
     "aws:cdk:path": "CdkAuth0PocStack/IdentityFnPOCQueue/Resource"
    }
   },
+  "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "auth0-poc-app-sg",
+    "GroupName": "auth0-poc-app-sg",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "Name",
+      "Value": "auth0-poc-app-sg"
+     },
+     {
+      "Key": "Owner",
+      "Value": "dev-team@pulsifi.me"
+     },
+     {
+      "Key": "Stack",
+      "Value": "identity-fn-sandbox-stack"
+     }
+    ],
+    "VpcId": "vpc-6749a900"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup/Resource"
+   }
+  },
+  "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupto00000ALLTRAFFICE5CA3F52": {
+   "Type": "AWS::EC2::SecurityGroupEgress",
+   "Properties": {
+    "CidrIp": "0.0.0.0/0",
+    "Description": "Allow all outbound traffic by default",
+    "GroupId": {
+     "Fn::GetAtt": [
+      "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "-1"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/security-group-resources/security-group-resources-security-group/SecurityGroup/to 0.0.0.0_0:ALL TRAFFIC"
+   }
+  },
+  "securitygroupresourcesdbtargetsecuritygroupfromCdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D3935854323FA3390A": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "auth0-poc-app-sg",
+    "FromPort": 5432,
+    "GroupId": "sg-0d3271a70576898d4",
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C",
+      "GroupId"
+     ]
+    },
+    "ToPort": 5432
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkAuth0PocStack/security-group-resources/db-target-security-group/from CdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D39358:5432"
+   }
+  },
   "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB": {
    "Type": "AWS::IAM::Role",
    "Properties": {
@@ -46,6 +111,18 @@
         ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
        ]
       ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+       ]
+      ]
      }
     ],
     "Tags": [
@@ -55,6 +132,11 @@
      }
     ]
    },
+   "DependsOn": [
+    "securitygroupresourcesdbtargetsecuritygroupfromCdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D3935854323FA3390A",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupto00000ALLTRAFFICE5CA3F52"
+   ],
    "Metadata": {
     "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/Resource"
    }
@@ -89,6 +171,15 @@
        ],
        "Effect": "Allow",
        "Resource": "arn:aws:secretsmanager:ap-southeast-1:434343955077:secret:identity-postgresql-credential-??????"
+      },
+      {
+       "Action": [
+        "sqs:GetQueueAttributes",
+        "sqs:GetQueueUrl",
+        "sqs:SendMessage"
+       ],
+       "Effect": "Allow",
+       "Resource": "arn:aws:sqs:ap-southeast-1:434343955077:notification-email-request-queue"
       }
      ],
      "Version": "2012-10-17"
@@ -100,6 +191,11 @@
      }
     ]
    },
+   "DependsOn": [
+    "securitygroupresourcesdbtargetsecuritygroupfromCdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D3935854323FA3390A",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupto00000ALLTRAFFICE5CA3F52"
+   ],
    "Metadata": {
     "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/ServiceRole/DefaultPolicy/Resource"
    }
@@ -109,7 +205,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-434343955077-ap-southeast-1",
-     "S3Key": "2df0c114fbf7f8886451dd39a0e09bbe8a89463f971868178842c5f03bd3160d.zip"
+     "S3Key": "f1ddcd56d3d942753526fa2cdcb047bdb15fe8a033bcb0e1018466be099f5c9a.zip"
     },
     "Environment": {
      "Variables": {
@@ -118,7 +214,9 @@
       },
       "SM_NAME": "identity-postgresql-credential",
       "REGION": "ap-southeast-1",
-      "NOTIFICATION_EMAIL_QUEUE": "NOTIFICATION_EMAIL_QUEUE",
+      "NOTIFICATION_EMAIL_QUEUE": {
+       "Ref": "SsmParameterValueconfigsapiAWSSQSBASEDNSC96584B6F00A464EAD1953AFF4B05118Parameter"
+      },
       "SENTRY_DSN": "https://b79130468ac5a32c12a79256a7812582@o157451.ingest.us.sentry.io/4508103154728960",
       "SERVERLESS_STAGE": "development",
       "AUTH0_DOMAIN": "https://sandbox-id.pulsifi.me/",
@@ -149,15 +247,33 @@
       "Value": "identity-fn-sandbox-stack"
      }
     ],
-    "Timeout": 30
+    "Timeout": 30,
+    "VpcConfig": {
+     "SecurityGroupIds": [
+      {
+       "Fn::GetAtt": [
+        "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C",
+        "GroupId"
+       ]
+      }
+     ],
+     "SubnetIds": [
+      "subnet-4d258304",
+      "subnet-9357e7f4",
+      "subnet-08bf9accd9777434c"
+     ]
+    }
    },
    "DependsOn": [
     "Auth0AccountSetupPOCHandlerServiceRoleDefaultPolicyD3FA7E20",
-    "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB"
+    "Auth0AccountSetupPOCHandlerServiceRoleFB5CCEAB",
+    "securitygroupresourcesdbtargetsecuritygroupfromCdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D3935854323FA3390A",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupto00000ALLTRAFFICE5CA3F52"
    ],
    "Metadata": {
     "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/Resource",
-    "aws:asset:path": "asset.2df0c114fbf7f8886451dd39a0e09bbe8a89463f971868178842c5f03bd3160d",
+    "aws:asset:path": "asset.f1ddcd56d3d942753526fa2cdcb047bdb15fe8a033bcb0e1018466be099f5c9a",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -181,6 +297,11 @@
      }
     ]
    },
+   "DependsOn": [
+    "securitygroupresourcesdbtargetsecuritygroupfromCdkAuth0PocStacksecuritygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupC0D3935854323FA3390A",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupB5E06A1C",
+    "securitygroupresourcessecuritygroupresourcessecuritygroupSecurityGroupto00000ALLTRAFFICE5CA3F52"
+   ],
    "Metadata": {
     "aws:cdk:path": "CdkAuth0PocStack/Auth0AccountSetupPOCHandler/SqsEventSource:CdkAuth0PocStackIdentityFnPOCQueue5D37D764/Resource"
    }
@@ -188,7 +309,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/91U22obMRD9lugxKGoupZS82SaBPCSkcaAPxpixNLuZRDtydHGyXfzvReuVExMovbwVBJLOzGiORmd0qk6+flHHB/ASjrR5OrK0VN00gn6S8BIWXXgOqvuWMOGsE2sKtCRLsb2nBl2K4lwcCikqqpw4jz6hFM/Z9wYa7G2buZxU3MdvpIVmaWDBzuBjUDf9dJlYR3I864RPHGmIkwI5+nZYPwAbi37Yxb3cDTbOt1P6UQKr4cQdh3zWmrzjBrlELRMbS1yL8040xFS1hX9wyWu8hlUBIvgaSxy+RvQM9tqZZDEMqMGKeLiwFNqZsu7+dPwnRdjMJUGjujtns24ghNSgGbc508oTa1qBHWnt0o7M1icHjHrmpZoNMNRobp0lTTnZrNvD2pEffOe5fmDMvbstKbYeOWawxgj64YotMe5s4lD8hvHX5/6ttW+PfGm5hXO+HZV7ly0fGH6EjZlGiJifNuyl/Ue4Z7cltpHhbAEhYAxqlCcZztQ46SeMYwg4mw/drbpJxaWp5cUaOU6LmFbE9azb19ISon54J9wGXscZIq6/Exv38oZPHOvkPbIuLeFx5Xzs/a8iNpdANvmdIJFhadGU3RuVopj8cdmIPuztLlj7drWTYG6u6EmHieOK6ne/2sfLbTbyDre90z+O7Cs1jVBno8wfn3oMn9anp+rkszo+eAxER0PHq7vt/BMwmksLkQUAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/+VVTW/bMAz9LdWxUL02HYYhtyRohx7adUmBHYwgUCTaZStTrj6Seob/+yB/pAmCddihpwFxJD1K5PMTSY+Si69fkvMTsXVnUj2faVwn9cIL+czF1q1q9+KS+keAAGnNNuhwjRp99YAFmODZmJ0yzjLMDBt7G4Czl7j3ThTQ2poln2XUnuft/1Q4SJcNBzlK6gXIYNFX36wJZVozt7/e+eBMgZMWS4+GemRTyn4mtDbbidbfg1+bQGrgodCJtYYb0kgwDxpcZ+kYHUQ+Aq5yC84dwTfU4g3XolgrsSKj4Mkld+1wHUhGgmnNbCCPO/JA3lb9/FGQ0mD7lT8QsYDC2GqBv4aDWe9xT4i31z6QyrFxyk7ZMgbboDVUAA1u14GURsrZuGYFEmbVoJAzwUq4FeUAeGFzGM7BqwdLQt8a1YnX30SG1F8tZ9KoYV7/6+9/UalZchRFUs+NjiUknAsFqGkVI5UWSWIp9ERKE3Zkuj3xwETucr7hrBAkclD3RqPEGCytD7BqYoe9fzIso0ko9WDuh9jdjuist3ov5GNXNztb1O3vxvf9foy1LeeoFe/gyGZH9MFEyxH/Y1iphRceYka4g7AfA7ekO74Nd5cr4Rx4l0ziwN1lMg3yGXzXK/tuk9SzjIYmw682QH4xpGaJlKf1YWauhZePe3VSiNdphJDyn0jKbN/wmSEZrAWSQwVaKI317f4bD8W1QB3sLr2BYmdVw+qNypBm8YugPVh3sLoiaav9Jl6AtyjdzFCG+d7n4vjlmobPoavE9n7feTpphRUFeLC8lXThRR698Nixkyf3aTMaJRefk/OTJ4d41neiZN6NvwHESfelEwcAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "CdkAuth0PocStack/CDKMetadata/Default"
@@ -196,6 +317,10 @@
   }
  },
  "Parameters": {
+  "SsmParameterValueconfigsapiAWSSQSBASEDNSC96584B6F00A464EAD1953AFF4B05118Parameter": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/configs/api/AWS_SQS_BASE_DNS"
+  },
   "BootstrapVersion": {
    "Type": "AWS::SSM::Parameter::Value<String>",
    "Default": "/cdk-bootstrap/hnb659fds/version",

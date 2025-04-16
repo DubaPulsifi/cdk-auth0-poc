@@ -85,6 +85,13 @@ export const TextColumn = (options?: ColumnOptions): PropertyDecorator => {
   });
 };
 
+export const StringColumn = (options?: ColumnOptions): PropertyDecorator => {
+  return Column({
+    ...options,
+    type: 'varchar',
+  });
+};
+
 export const ArrayColumn = (options?: ColumnOptions): PropertyDecorator => {
   return Column({
     ...options,

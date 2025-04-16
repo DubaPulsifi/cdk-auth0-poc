@@ -9,7 +9,7 @@ import {
 import { UserAccount } from './user-account.entity';
 import { EnumColumn, IntegerColumn, SoftDeleteColumn, AuditDataEntity, RbacResourceRestrictionPolicy, RbacStatus } from '../shared';
 
-@Entity()
+@Entity('user_additional_permission')
 export class UserAdditionalPermission extends AuditDataEntity {
     @PrimaryGeneratedColumn('uuid')
     id!: string;

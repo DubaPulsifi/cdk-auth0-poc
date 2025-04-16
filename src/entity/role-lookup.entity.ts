@@ -15,7 +15,7 @@ import {
   RbacStatus,
 } from "../shared";
 
-@Entity()
+@Entity('role_lookup')
 export class RoleLookup extends AuditDataEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;

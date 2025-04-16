@@ -7,14 +7,15 @@ import {
 } from 'typeorm';
 
 import { Company } from './company.entity';
-import { IntegerColumn, SoftDeleteColumn, TextColumn, AuditDataEntity } from '../shared';
+import { IntegerColumn, SoftDeleteColumn, TextColumn, AuditDataEntity, StringColumn } from '../shared';
 
-@Entity()
+@Entity('sso_domain')
 export class SsoDomain extends AuditDataEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @TextColumn({
+    @StringColumn({
+        type: 'varchar',
         length: 255,
         unique: true,
     })

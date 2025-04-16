@@ -11,21 +11,22 @@ const testEvent = {
     {
       body: JSON.stringify({
         data: {
-          email: "test-email@pulsifi.me",
+          user_id: "41988",
+          email: "test001@bulk.com",
           email_verified: true,
           password: generatorUtil.password(18),
-          given_name: 'John',
-          family_name: 'Doe',
-          name: 'John Doe',
+          given_name: "John",
+          family_name: "Doe",
+          name: "John Doe",
           app_metadata: {
-            user_account_id: 1,
+            user_account_id: 41988,
           },
-          user_metadata: {},
+          user_metadata: { locale: "en-US", timezone: "Europe/Istanbul" },
           connection: Auth0Database.TALENT,
         },
         tenant: "Enterprise",
         company: {
-          id: "456",
+          id: "308",
           name: "Test Company",
         },
       }),
@@ -49,10 +50,15 @@ const testEvent = {
 async function debugHandler() {
   try {
     console.log(JSON.parse(testEvent.Records[0].body));
-    
-    const result = deleteAuth0User('test001@bulk.com', Auth0Tenant.ENTERPRISE)
-    // const result = await handler(testEvent);
-    console.log("Success:", result);
+
+    const deleteResult = await deleteAuth0User(
+      "test001@bulk.com",
+      Auth0Tenant.ENTERPRISE
+    );
+    console.log("Delete Success:", deleteResult);
+
+    const handleresult = await handler(testEvent);
+    console.log("HandlerSuccess:", handleresult);
   } catch (error) {
     console.error("Error:", error);
   }

@@ -1,0 +1,64 @@
+{
+  "ssm:account=434343955077:parameterName=/configs/VPCID:region=ap-southeast-1": "vpc-6749a900",
+  "ssm:account=434343955077:parameterName=/configs/RDS/DB_SECURITY_GROUP_NAME:region=ap-southeast-1": "sandbox-pg-sg",
+  "vpc-provider:account=434343955077:filter.vpc-id=vpc-6749a900:region=ap-southeast-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-6749a900",
+    "vpcCidrBlock": "10.0.0.0/16",
+    "ownerAccountId": "434343955077",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-4d258304",
+            "cidr": "10.0.1.0/24",
+            "availabilityZone": "ap-southeast-1a",
+            "routeTableId": "rtb-9e0f99f9"
+          },
+          {
+            "subnetId": "subnet-9357e7f4",
+            "cidr": "10.0.3.0/24",
+            "availabilityZone": "ap-southeast-1b",
+            "routeTableId": "rtb-04b7549a7c3e88bc2"
+          },
+          {
+            "subnetId": "subnet-08bf9accd9777434c",
+            "cidr": "10.0.4.0/24",
+            "availabilityZone": "ap-southeast-1c",
+            "routeTableId": "rtb-02fa87b69290d6632"
+          }
+        ]
+      },
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-a82482e1",
+            "cidr": "10.0.0.0/24",
+            "availabilityZone": "ap-southeast-1a",
+            "routeTableId": "rtb-132a5a74"
+          },
+          {
+            "subnetId": "subnet-9f55e5f8",
+            "cidr": "10.0.2.0/24",
+            "availabilityZone": "ap-southeast-1b",
+            "routeTableId": "rtb-0858f2d4beceb90a5"
+          },
+          {
+            "subnetId": "subnet-06d7da4a217e56681",
+            "cidr": "10.0.5.0/24",
+            "availabilityZone": "ap-southeast-1c",
+            "routeTableId": "rtb-0ae511fc8fc62ad4b"
+          }
+        ]
+      }
+    ]
+  },
+  "security-group:account=434343955077:region=ap-southeast-1:securityGroupName=sandbox-pg-sg:vpcId=vpc-6749a900": {
+    "securityGroupId": "sg-0d3271a70576898d4",
+    "allowAllOutbound": true
+  }
+}

@@ -1,6 +1,6 @@
 export type DbSecret = {
     username: string;
-    iam_username: string;
+    iamUsername: string;
     engine: string;
     port: number;
     host: string;

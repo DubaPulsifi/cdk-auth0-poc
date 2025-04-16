@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 
 import { UserAccount } from './user-account.entity';
-import { DateTimeColumn, EnumColumn, IntegerColumn, JsonColumn, TextColumn, AuditDataEntity, WebApp } from '../shared';
+import { DateTimeColumn, EnumColumn, IntegerColumn, JsonColumn, TextColumn, AuditDataEntity, WebApp, StringColumn } from '../shared';
 
-@Entity()
+@Entity('user_invitation')
 export class UserInvitation extends AuditDataEntity {
     @PrimaryColumn({
         type: 'uuid',
@@ -24,17 +24,17 @@ export class UserInvitation extends AuditDataEntity {
     })
     app!: WebApp;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
     })
     email!: string;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
     })
     first_name!: string;
 
-    @TextColumn({
+    @StringColumn({
         length: 255,
         nullable: true,
     })

@@ -8,9 +8,9 @@ import {
 } from 'typeorm';
 
 import { UserAccount } from './user-account.entity';
-import { IntegerColumn, JsonColumn, TextColumn, AuditDataEntity } from '../shared';
+import { IntegerColumn, JsonColumn, TextColumn, AuditDataEntity, StringColumn } from '../shared';
 
-@Entity()
+@Entity('user_preference')
 @Unique(['user_account_id', 'preference_lookup_key'])
 export class UserPreference extends AuditDataEntity {
     @PrimaryGeneratedColumn()
@@ -19,7 +19,7 @@ export class UserPreference extends AuditDataEntity {
     @IntegerColumn()
     user_account_id!: number;
 
-    @TextColumn({
+    @StringColumn({
         length: 50,
     })
     preference_lookup_key!: string;

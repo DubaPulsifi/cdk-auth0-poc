@@ -5,6 +5,7 @@ import { Construct } from 'constructs';
 import { Duration } from 'aws-cdk-lib';
 import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { SecurityGroupResources } from './security-groups';
 
 interface LambdaConfig {
   fileName: string;
@@ -13,6 +14,7 @@ interface LambdaConfig {
   memorySize?: number;
   environment?: { [key: string]: string };
   name: string;
+  securityGroups: SecurityGroupResources;
 }
 
 export class LambdaBuilder {
@@ -67,6 +69,8 @@ export class LambdaBuilder {
       timeout: config.timeout || Duration.seconds(30),
       memorySize: config.memorySize || 128,
       functionName: config.name || id,
+      vpc: config.securityGroups.securityGroup.vpc,
+      securityGroups: [config.securityGroups.securityGroup.securityGroup],
       environment: {
         QUEUE_URL: queue.queueUrl,
         ...config.environment,
