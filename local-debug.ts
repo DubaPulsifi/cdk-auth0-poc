@@ -11,7 +11,6 @@ const testEvent = {
     {
       body: JSON.stringify({
         data: {
-          user_id: "41988",
           email: "test001@bulk.com",
           email_verified: true,
           password: generatorUtil.password(18),
